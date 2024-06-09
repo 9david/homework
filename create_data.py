@@ -1,19 +1,35 @@
 import csv
 import json
 
-def load_data_from_csv(filename):
-    with open(filename, 'r', newline='', encoding='utf-8') as csvfile:
+def save_data_to_csv(tv_data, csv_file):
+    '''Сохранение данных в формате CSV'''
+    csv_columns = ["Название", "Тип панели", "Диагональ (дюйм)", "Разрешение", "Поддержка hdr", "Частота (гц)", "Операционная система"]
+    try:
+        with open(csv_file, 'w', newline='') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
+            writer.writeheader()
+            for data in tv_data:
+                writer.writerow(data)
+    except IOError:
+        print("I/O error")
+
+    print(f"Созданы данные в файле {csv_file}")
+
+def load_data_from_csv(csv_file):
+    '''Выгрузка данных из CSV в python обьект'''
+    with open(csv_file, 'r', newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         data = [row for row in reader]
     return data
 
-def save_data_to_json(data, filename, duplicate=False):
-    with open(filename, 'w', encoding='utf-8') as jsonfile:
+def save_data_to_json(data, js_file, duplicate=False):
+    '''Сохранение данных в формате JSON'''
+    with open(js_file, 'w', encoding='utf-8') as jsonfile:
         json.dump(data, jsonfile, ensure_ascii=False, indent=4)
         if not duplicate:
-            print('Данные из csv формата сохранены в формат json')
+            print(f'Данные из python обьекта сохранены в файле {js_file}')
         else:
-            print('Созданы продублированные данные')
+            print(f'Созданы и приведены дубликаты данных в файле {js_file}')
 
 
 # Данные о телевизорах
@@ -58,22 +74,10 @@ tv_data = [
 
 if __name__ == "__main__":
     # Сохранение данных в формате CSV
-    csv_columns = ["Название", "Тип панели", "Диагональ (дюйм)", "Разрешение", "Поддержка hdr", "Частота (гц)", "Операционная система"]
-    csv_file = "tv_data.csv"
-    try:
-        with open(csv_file, 'w', newline='') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
-            writer.writeheader()
-            for data in tv_data:
-                writer.writerow(data)
-    except IOError:
-        print("I/O error")
-
-    print(f"Созданы данные в файле {csv_file}")
-
+    save_data_to_csv(tv_data, "tv_data.csv")
 
     # Выгрузка данных из CSV в python обьект
-    data = load_data_from_csv('tv_data.csv')
+    py_data = load_data_from_csv('tv_data.csv')
 
     # Сохранение данных в формате JSON
-    save_data_to_json(data, 'tv_data.js')
+    save_data_to_json(py_data, 'tv_data.js')
