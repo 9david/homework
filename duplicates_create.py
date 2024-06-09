@@ -7,7 +7,11 @@ def similarity(a, b):
     return SequenceMatcher(None, a, b).ratio()
 
 def find_duplicates(data, key, threshold=0.8):
-    '''используется метод сортированных соседей и схожесть строк'''
+    '''
+    Используется метод сортированных соседей (Sorted Neighborhood Method).
+    Этот метод основан на сортировке данных по определенному ключу
+    и сравнении соседних записей для обнаружения дубликатов.
+    '''
     data_sorted = sorted(data, key=lambda x: x[key])
     duplicates = []
     visited = [False] * len(data_sorted)
