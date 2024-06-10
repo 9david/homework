@@ -16,7 +16,7 @@ def save_data_to_csv(tv_data, csv_file):
     print(f"Созданы данные в файле {csv_file}")
 
 def load_data_from_csv(csv_file):
-    '''Выгрузка данных из CSV в python обьект'''
+    '''Выгрузка данных из CSV в python обьект в виде списка словарей'''
     with open(csv_file, 'r', newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         data = [row for row in reader]
@@ -29,7 +29,7 @@ def save_data_to_json(data, js_file, duplicate=False):
         if not duplicate:
             print(f'Данные из python обьекта сохранены в файле {js_file}')
         else:
-            print(f'Созданы и приведены дубликаты данных в файле {js_file}')
+            print(f'Созданы и приведены дубликаты данных в файле {js_file}, найдено {len(data)} групп дубликатов.')
 
 
 # Данные о телевизорах

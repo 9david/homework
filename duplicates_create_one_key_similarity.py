@@ -1,5 +1,4 @@
 import json
-import csv
 from difflib import SequenceMatcher
 from create_data import save_data_to_json
 
@@ -36,5 +35,5 @@ with open('tv_data.js', 'r', encoding='utf-8') as jsonfile:
 duplicates = find_duplicates(data, key='Название')
 
 # Сохранение дубликатов в формате JSON
-save_data_to_json(duplicates, 'duplicates_data.js', duplicate=True)
+save_data_to_json(duplicates, 'duplicates_data_one_key_similarity.js', duplicate=True)
 
