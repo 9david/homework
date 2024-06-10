@@ -22,11 +22,11 @@ def load_data_from_csv(csv_file):
         data = [row for row in reader]
     return data
 
-def save_data_to_json(data, js_file, duplicate=False):
+def save_data_to_json(data, js_file, dupl=False):
     '''Сохранение данных в формате JSON'''
     with open(js_file, 'w', encoding='utf-8') as jsonfile:
         json.dump(data, jsonfile, ensure_ascii=False, indent=4)
-        if not duplicate:
+        if not dupl:
             print(f'Данные из python обьекта сохранены в файле {js_file}')
         else:
             print(f'Созданы и приведены дубликаты данных в файле {js_file}, найдено {len(data)} групп дубликатов.')

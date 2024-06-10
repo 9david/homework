@@ -3,6 +3,7 @@ from difflib import SequenceMatcher
 from create_data import save_data_to_json
 
 def similarity(a, b):
+    """Вычисляет схожесть двух строк."""
     return SequenceMatcher(None, a, b).ratio()
 
 def find_duplicates(data, key, threshold=0.8):
