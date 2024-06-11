@@ -43,5 +43,5 @@ with open('tv_data.js', 'r', encoding='utf-8') as jsonfile:
 duplicates = find_duplicates(data)
 
 # Шаг 3: Сохранение найденных дубликатов в формате JSON
-save_data_to_json(duplicates, 'duplicates_data_all_keys_average_similarity.js', duplicate=True)
+save_data_to_json(duplicates, 'duplicates_data_all_keys_average_similarity.js', dupl=True)
 

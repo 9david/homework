@@ -41,5 +41,5 @@ with open('tv_data.js', 'r', encoding='utf-8') as jsonfile:
 duplicates = find_duplicates(data, threshold=0.9)  # Установите порог в 90% схожести
 
 # Шаг 3: Сохранение найденных дубликатов в формате JSON
-save_data_to_json(duplicates, 'duplicates_data_all_keys_90%_similarity.js', duplicate=True)
+save_data_to_json(duplicates, 'duplicates_data_all_keys_90%_similarity.js', dupl=True)
 

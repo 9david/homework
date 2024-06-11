@@ -35,4 +35,4 @@ if __name__ == '__main__':
                 duplicates.append(output)
 
     # Сохранение дубликатов в формате JSON
-    save_data_to_json(duplicates, 'duplicates_data_mrjob.js', duplicate=True)
+    save_data_to_json(duplicates, 'duplicates_data_mrjob.js', dupl=True)
